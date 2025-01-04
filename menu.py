@@ -1,5 +1,5 @@
 
-from operations import Registration, login, create_project, view_all_projects,edit_project,delete_project
+from operations import Registration, login, create_project, view_all_projects,edit_project,delete_project,search_by_date
 
 def main_menu():
     while True:
@@ -10,15 +10,14 @@ def main_menu():
                        """)
         if choice == "1":
             user_id=login()
-            print(user_id)
             if user_id:
                 while True:
                     choice2=input("""
                             1- Create project
                             2- View all projects
-                            3- Edit your project
-                            4- Delete your project
-                            5- Search for a project
+                            3- Edit project
+                            4- Delete project
+                            5- Search for a project by date
                             6- Exit   
                             """)
                     if choice2 == "1":
@@ -30,7 +29,7 @@ def main_menu():
                     elif choice2 == "4":
                         delete_project(user_id) 
                     elif choice2 == "5":
-                        print("Search for a project")
+                        search_by_date()
                     elif choice2 == "6":
                         break
                     else:

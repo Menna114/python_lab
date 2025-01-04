@@ -166,3 +166,20 @@ def delete_project_from_file(user_id,project_id):
                 return
     else:
         print("Project not found")
+
+def search(date):
+    projects_list = read_all_projects()
+    flag=False
+    for project in projects_list:
+        if project["start_date"] == date or project["end_date"] == date:
+                print(f"Project ID: {project['id']}")
+                print(f"Project Title: {project['title']}")
+                print(f"Project Details: {project['details']}")
+                print(f"Project Total Target: {project['total_target']}")
+                print(f"Project Start Date: {project['start_date']}")
+                print(f"Project End Date: {project['end_date']}")
+                print("=====================================")
+                flag=True
+    if flag==False:
+        print("No projects available for this date")
+        return

@@ -1,5 +1,5 @@
 from inputs_module import passwordCheck, phoneCheck, emailCheck, validateStringInput, dateCheck, checkIfEmailExists, checkIntInput, checkOwner, checkIdExists
-from file_operations import registered_users, generate_id, read_all_users, generate_project_id ,registered_projects, view_projects ,edit_title, edit_details, edit_total_target, edit_start_date, edit_end_date,delete_project_from_file
+from file_operations import registered_users, generate_id, read_all_users, generate_project_id ,registered_projects, view_projects ,edit_title, edit_details, edit_total_target, edit_start_date, edit_end_date,delete_project_from_file,search
 def Registration():
     try:
         first_Name = input("Enter your First name: ")
@@ -132,5 +132,10 @@ def delete_project(user_id):
     except ValueError as e:
         print(f"Error: {e}")
 
-def search_project():
-    pass
+def search_by_date():
+    try:
+        date=input("Enter the date you want to search for: ")
+        dateCheck(date)
+        search(date)
+    except ValueError as e:
+        print(f"Error: {e}")
