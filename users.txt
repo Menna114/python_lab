@@ -1,0 +1,18 @@
+[
+    {
+        "id": 2,
+        "first_name": "menna",
+        "last_name": "diaa",
+        "email": "mennadiaah14@gmail.com",
+        "phone": "201022386709",
+        "password": "we"
+    },
+    {
+        "id": 3,
+        "first_name": "mohamed",
+        "last_name": "Diaa",
+        "email": "mdiaa@yahoo.com",
+        "phone": "201022386708",
+        "password": "qe"
+    }
+]
