@@ -1,5 +1,5 @@
-from inputs_module import passwordCheck, phoneCheck, emailCheck, validateStringInput, dateCheck, checkIfEmailExists, checkIntInput, checkOwner
-from file_operations import registered_users, generate_id, read_all_users, generate_project_id ,registered_projects, view_projects
+from inputs_module import passwordCheck, phoneCheck, emailCheck, validateStringInput, dateCheck, checkIfEmailExists, checkIntInput, checkOwner, checkIdExists
+from file_operations import registered_users, generate_id, read_all_users, generate_project_id ,registered_projects, view_projects ,edit_title, edit_details, edit_total_target, edit_start_date, edit_end_date,delete_project_from_file
 def Registration():
     try:
         first_Name = input("Enter your First name: ")
@@ -88,38 +88,49 @@ def edit_project(user_id):
     try:
         project_id=input("Enter the project id you want to edit : ")
         checkIntInput(project_id)
-        checkOwner(project_id,user_id)
-        choice=input("What do you want to edit? \n1- Title \n2- Details \n3- Total Target \n4- Start Date \n5- End Date \n6- I don't want to edit")
-        if choice == "1":
-            title=input("Enter the new title: ")
-            checkIntInput(title)
-            edit_title(project_id,title)
-        if choice == "2":
-            details=input("Enter the new details: ")
-            checkIntInput(details)
-            edit_details(project_id,details)
-        if choice == "3":
-            totalTarget=input("Enter the new total target: ")
-            checkIntInput(totalTarget)
-            edit_total_target(project_id,totalTarget)
-        if choice == "4":
-            startDate=input("Enter the new start date: ")
-            dateCheck(startDate)
-            edit_start_date(project_id,startDate)
-        if choice == "5":
-            endDate=input("Enter the new end date: ")
-            dateCheck(endDate)
-            edit_end_date(project_id,endDate)
-        if choice == "6":
-            return
+        project_id=int(project_id)
+        flag2=checkIdExists(project_id)
+        if flag2 == True:
+            flag=checkOwner(user_id,project_id)
+            if flag ==True:
+                choice=input("What do you want to edit? \n1- Title \n2- Details \n3- Total Target \n4- Start Date \n5- End Date \n6- Cancel \n")
+                if choice == "1":
+                    title=input("Enter the new title: ")
+                    edit_title(project_id,title)
+                if choice == "2":
+                    details=input("Enter the new details: ")
+                    edit_details(project_id,details)
+                if choice == "3":
+                    totalTarget=input("Enter the new total target: ")
+                    checkIntInput(totalTarget)
+                    edit_total_target(project_id,totalTarget)
+                if choice == "4":
+                    startDate=input("Enter the new start date: ")
+                    dateCheck(startDate)
+                    edit_start_date(project_id,startDate)
+                if choice == "5":
+                    endDate=input("Enter the new end date: ")
+                    dateCheck(endDate)
+                    edit_end_date(project_id,endDate)
+                if choice == "6":
+                    return
     except ValueError as e:
         print(f"Error: {e}")
 
 
-def delete_project():
-    pass
+def delete_project(user_id):
+    try:
+        project_id=input("Enter the project you want to delete : ")
+        checkIntInput(project_id)
+        project_id=int(project_id)
+        flag2=checkIdExists(project_id)
+        if flag2 == True:
+            flag=checkOwner(user_id,project_id)
+            if flag ==True:
+                delete_project_from_file(user_id,project_id)
 
-
+    except ValueError as e:
+        print(f"Error: {e}")
 
 def search_project():
     pass

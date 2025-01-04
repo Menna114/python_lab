@@ -44,11 +44,24 @@ def checkIntInput(inputString):
     if not inputString.isdigit():
         raise ValueError("Input must be a number")
     
-def checkOwner(project_id, user_id):
+def checkOwner(user_id, project_id):
+    project_id = int(project_id)
+    user_id = int(user_id)
     projects_list = read_all_projects()
+
     for project in projects_list:
         if project["id"] == project_id and project["user_id"] == user_id:
             return True
     else:
         print("You are not the owner of this project")
+        return False    
+
+
+def checkIdExists(project_id):
+    projects_list = read_all_projects()
+    for project in projects_list:
+        if project["id"] == project_id:
+            return True
+    else:
+        print("Project does not exist")
         return False

@@ -95,12 +95,74 @@ def view_projects():
 
 def edit_title(project_id, title):
     projects_list = read_all_projects()
+    flag = False
     for project in projects_list:
         if project["id"] == project_id:
             project["title"] = title
+            flag = True
+            print("Title edited successfully")
+            register_all_projects(projects_list)
+            break
+    else:
+        print("Project not found")
+
+
+def edit_details(project_id, details):
+    projects_list = read_all_projects()
+    for project in projects_list:
+        if project["id"] == project_id:
+            project["details"] = details
             saved = register_all_projects(projects_list)
             if saved:
-                print("Title edited successfully")
+                print("Details edited successfully")
+                return
+    else:
+        print("Project not found")
+
+def edit_total_target(project_id, total_target):
+    projects_list = read_all_projects()
+    for project in projects_list:
+        if project["id"] == project_id:
+            project["total_target"] = total_target
+            saved = register_all_projects(projects_list)
+            if saved:
+                print("Total target edited successfully")
+                return
+    else:
+        print("Project not found")
+
+def edit_start_date(project_id, start_date):
+    projects_list = read_all_projects()
+    for project in projects_list:
+        if project["id"] == project_id:
+            project["start_date"] = start_date
+            saved = register_all_projects(projects_list)
+            if saved:
+                print("Start date edited successfully")
+                return
+    else:
+        print("Project not found")
+
+def edit_end_date(project_id, end_date):
+    projects_list = read_all_projects()
+    for project in projects_list:
+        if project["id"] == project_id:
+            project["end_date"] = end_date
+            saved = register_all_projects(projects_list)
+            if saved:
+                print("End date edited successfully")
+                return
+    else:
+        print("Project not found")
+
+def delete_project_from_file(user_id,project_id):
+    project_list = read_all_projects()
+    for project in project_list:
+        if project["id"] == project_id and project["user_id"] == user_id:
+            project_list.remove(project)
+            saved = register_all_projects(project_list)
+            if saved:
+                print("Project deleted successfully")
                 return
     else:
         print("Project not found")

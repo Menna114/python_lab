@@ -2,9 +2,9 @@
     {
         "id": 2,
         "user_id": 2,
-        "title": "projectOne",
-        "details": "hello this is proj one",
-        "total_target": "250000",
+        "title": "new",
+        "details": "wedef",
+        "total_target": "233424",
         "start_date": "2024-3-11",
         "end_date": "2025-5-6"
     },
@@ -18,12 +18,12 @@
         "end_date": "2026-7-1"
     },
     {
-        "id": 4,
+        "id": 5,
         "user_id": 2,
-        "title": "project2",
-        "details": "project 2",
-        "total_target": "23000",
-        "start_date": "2026-9-8",
-        "end_date": "2027-8-3"
+        "title": "menna",
+        "details": "dsadas",
+        "total_target": "23424",
+        "start_date": "2029-4-5",
+        "end_date": "2023-5-8"
     }
 ]
